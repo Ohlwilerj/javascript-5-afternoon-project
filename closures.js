@@ -54,7 +54,7 @@ function callFriend(name) {
 
 //Code Here
 let callJake = callFriend('Jake')
-dial('435-555-9248')
+callJake('435-555-9248')
 
 
 ////////// PROBLEM 3 //////////
@@ -95,12 +95,16 @@ function makeCounter() {
 
 function counterFactory(value) {
   // Code here.
+  let startVal = value
+
   return {
-    inc: function() {
-      return ++ value 
+    inc: function(){
+      startVal ++
+      return startVal 
     },
-    dec: function () {
-      return -- value 
+    dec: function(){
+      startVal --
+      return startVal 
     }
   };
 }
@@ -126,7 +130,7 @@ function motivation( firstname, lastname ) {
 
   // code message function here.
   function message() {
-    return welcomeText
+    return welcomeText +  " " + firstname + " " + lastname + "."
   }
   //Uncommment this to return the value of your message function
   return message;
@@ -158,6 +162,9 @@ var module = (function() {
   // outside our lexical scope
   return {
     // Code here.
+    publicMethod: function(){
+      return privateMethod()
+    }
   };
 })();
 
@@ -177,6 +184,14 @@ function secretNumber() {
 
   return {
     // Code here
+    addToSecret: function(parameter){
+      secret += parameter
+      return secret
+    },
+    takeAwayFromSecret: function(parameter) {
+      secret -= parameter
+      return secret
+    }
   };
 }
 
@@ -202,8 +217,9 @@ function secretNumber() {
 
 function timeOutCounter() {
   for (var i = 0; i <= 5; i++) {
+    let j = i
     setTimeout(function() {
-      console.log(i);
+      console.log(j);
     }, i * 1000);
   }
 }
